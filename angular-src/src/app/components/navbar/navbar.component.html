@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <a class="navbar-brand" [routerLink]="['/']">Tacker Mateo</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navbarsExampleDefault" aria-expanded="false"
+    aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse">
+    <ul class=" navbar-nav mr-auto">
+      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+        <a class="nav-link" [routerLink]="['/']">Home</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+        <a class="nav-link" [routerLink]="['/login']">Login</a>
+      </li>
+      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+        <a class="nav-link" [routerLink]="['/register']">Register</a>
+      </li>
+    </ul>
+  </div>
+</nav>
