@@ -50,7 +50,6 @@ export class AuthService {
   }
 
   loggedIn() {
-    console.log("logged in? " + tokenNotExpired());
     return tokenNotExpired();
   }
 
