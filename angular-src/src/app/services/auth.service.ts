@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
+import { tokenNotExpired } from 'angular2-jwt';
 import 'rxjs/add/operator/map';
 
 @Injectable()
@@ -38,14 +39,19 @@ export class AuthService {
   storeUserData(user, token) {
     // local storage can only store strings
     localStorage.setItem("user", JSON.stringify(user));
-    // this is JWT's default
-    localStorage.setItem("id_token", token);
+    // angular2-jwt looks for this name
+    localStorage.setItem("token", token);
     this.user = user;
     this.authToken = token;
   }
 
   loadToken() {
-    this.authToken = localStorage.getItem("id_token");
+    this.authToken = localStorage.getItem("token");
+  }
+
+  loggedIn() {
+    console.log("logged in? " + tokenNotExpired());
+    return tokenNotExpired();
   }
 
   logOut() {
