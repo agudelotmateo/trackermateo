@@ -11,11 +11,13 @@ const UserSchema = mongoose.Schema({
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     username: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     password: {
         type: String,
@@ -31,6 +33,10 @@ module.exports.getUserById = function (id, callback) {
 
 module.exports.getUserByUsername = function (name, callback) {
     User.findOne({ username: name }, callback);
+}
+
+module.exports.getUserByEmail = function (email, callback) {
+    User.findOne({ email: email }, callback);
 }
 
 module.exports.addUser = function (user, callback) {

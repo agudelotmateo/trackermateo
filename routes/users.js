@@ -16,12 +16,23 @@ router.post("/register", function (req, res, next) {
         username: req.body.username,
         password: req.body.password
     });
-    // this function hashes the password
-    User.addUser(newUser, function (err, user) {
+    User.getUserByUsername(newUser.username, function (err, user) {
         if (err)
-            res.json({ success: false, msg: "Failed to register user" });
-        else
-            res.json({ success: true, msg: "User successfully registered" });
+            throw err;
+        if (user)
+            return res.json({ success: false, msg: "Username already in use" });
+        User.getUserByEmail(newUser.email, function (err, user) {
+            if (err)
+                throw err;
+            if (user)
+                return res.json({ success: false, msg: "Email already in use" });
+            User.addUser(newUser, function (err, user) {
+                if (err)
+                    res.json({ success: false, msg: "Failed to register user" });
+                else
+                    res.json({ success: true, msg: "User successfully registered" });
+            });
+        });
     });
 });
 
