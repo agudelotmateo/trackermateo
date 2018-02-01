@@ -3,11 +3,11 @@ import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'app-view',
+  templateUrl: './view.component.html',
+  styleUrls: ['./view.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class ViewComponent implements OnInit {
   user: Object;
 
   constructor(private authService: AuthService, private router: Router) { }
@@ -21,5 +21,4 @@ export class DashboardComponent implements OnInit {
         return false;
       });
   }
-
 }

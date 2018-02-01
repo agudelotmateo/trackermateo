@@ -1,0 +1,12 @@
+<div *ngIf="user">
+  <p></p>
+  <h2 class="page-header">{{message}}</h2>
+  <div *ngIf="canRecord">
+    <p></p>
+    <p>Current position: </p>
+    <ul class="list-group">
+      <li class="list-group-item">Latitude: {{latitude}}</li>
+      <li class="list-group-item">Longitude: {{longitude}}</li>
+    </ul>
+  </div>
+</div>

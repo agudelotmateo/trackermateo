@@ -18,6 +18,14 @@ export class AuthService {
     });
   }
 
+  recordLocation(location) {
+    let headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    return this.http.post("http://localhost:3000/users/record", location, { headers: headers }).map(function (res) {
+      return res.json();
+    });
+  }
+
   authenticateUser(user) {
     let headers = new Headers();
     headers.append("Content-Type", "application/json");
@@ -41,6 +49,7 @@ export class AuthService {
     localStorage.setItem("user", JSON.stringify(user));
     // angular2-jwt looks for this name
     localStorage.setItem("token", token);
+    localStorage.setItem("username", user.username);
     this.user = user;
     this.authToken = token;
   }

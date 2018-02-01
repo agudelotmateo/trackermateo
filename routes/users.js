@@ -5,8 +5,26 @@ const express = require("express");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
+const Location = require("../models/location");
 const config = require("../config/database");
 const router = express.Router();
+
+// '/users/record' route
+router.post("/record", function (req, res, next) {
+    let newLocation = new Location({
+        latitude: req.body.latitude,
+        longitude: req.body.longitude,
+        username: req.body.username
+    });
+    Location.addLocation(newLocation, function (err, user) {
+        if (err) {
+            console.log(err);
+            res.json({ success: false, msg: "Failed to record location" });
+        }
+        else
+            res.json({ success: true, msg: "Location successfully recorded" });
+    });
+});
 
 // '/users/register' route
 router.post("/register", function (req, res, next) {
