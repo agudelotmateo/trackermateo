@@ -15,6 +15,7 @@ export class SaveComponent implements OnInit {
   delay: Number = 1000;
   message: String = "Loading...";
   canRecord: Boolean = false;
+  recording: Boolean = false;
 
   constructor(
     private authService: AuthService,
@@ -23,7 +24,7 @@ export class SaveComponent implements OnInit {
 
   ngOnInit() {
     this.getLocation();
-    clearInterval(this.authService.timer);
+    clearInterval(this.authService.timer); 
     this.authService.timer = setInterval(() => {
       let location = {
         latitude: this.latitude,
@@ -33,6 +34,7 @@ export class SaveComponent implements OnInit {
       if (this.validateService.validateLocation(location))
         this.authService.recordLocation(location).subscribe();
     }, this.delay);
+    this.recording = true;
   }
 
   getLocation() {
@@ -62,6 +64,12 @@ export class SaveComponent implements OnInit {
       this.message = "Geolocation is not supported by this browser";
       this.canRecord = false;
     }
+  }
+
+  stopRecording() {
+    clearInterval(this.authService.timer);    
+    this.recording = false;
+    this.message = "No longer recording";
   }
 
 }
