@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../services/auth.service'
+import { ValidateService } from '../../services/validate.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,31 +10,29 @@ import { Router } from '@angular/router';
 })
 export class SaveComponent implements OnInit {
   user: Object;
-  delay: Number = 1000;
   latitude: Number;
   longitude: Number;
+  delay: Number = 1000;
   message: String = "Loading...";
   canRecord: Boolean = false;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(
+    private authService: AuthService,
+    private validateService: ValidateService,
+    private router: Router) { }
 
   ngOnInit() {
-    this.authService.getProfile().subscribe(profile => {
-      this.user = profile.user;
-      this.getLocation();
-      setInterval(() => {
-        let location = {
-          latitude: this.latitude,
-          longitude: this.longitude,
-          username: localStorage.getItem("username")
-        }
+    this.getLocation();
+    clearInterval(this.authService.timer);
+    this.authService.timer = setInterval(() => {
+      let location = {
+        latitude: this.latitude,
+        longitude: this.longitude,
+        username: localStorage.getItem("username")
+      }
+      if (this.validateService.validateLocation(location))
         this.authService.recordLocation(location).subscribe();
-      }, this.delay);
-    },
-      err => {
-        console.log(err);
-        return false;
-      });
+    }, this.delay);
   }
 
   getLocation() {

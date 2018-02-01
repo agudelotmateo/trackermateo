@@ -13,12 +13,6 @@ export class ViewComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
-    this.authService.getProfile().subscribe(profile => {
-      this.user = profile.user;
-    },
-      err => {
-        console.log(err);
-        return false;
-      });
+    
   }
 }

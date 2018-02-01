@@ -7,6 +7,7 @@ import 'rxjs/add/operator/map';
 export class AuthService {
   authToken: any;
   user: any;
+  timer: any; 
 
   constructor(private http: Http) { }
 
@@ -19,6 +20,7 @@ export class AuthService {
   }
 
   recordLocation(location) {
+    console.log(location);
     let headers = new Headers();
     headers.append("Content-Type", "application/json");
     return this.http.post("http://localhost:3000/users/record", location, { headers: headers }).map(function (res) {
@@ -66,5 +68,6 @@ export class AuthService {
     this.authToken = null;
     this.user = null;
     localStorage.clear();
+    clearInterval(this.timer);
   }
 }
