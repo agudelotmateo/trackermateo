@@ -8,11 +8,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./view.component.css']
 })
 export class ViewComponent implements OnInit {
-  user: Object;
+  location: Object;
 
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
-    
+    this.authService.getLocation().subscribe(location => {
+      this.location = location.location;
+      console.log(this.location);
+    },
+      err => {
+        console.log(err);
+        return false;
+      });
   }
 }

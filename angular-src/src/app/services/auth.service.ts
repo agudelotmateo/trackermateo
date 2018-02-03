@@ -51,6 +51,18 @@ export class AuthService {
     });
   }
 
+  getLocation() {
+    let headers = new Headers();
+    this.loadToken();
+    headers.append("Authorization", this.authToken);
+    headers.append("Content-Type", "application/json");
+    let url = "http://localhost:3000/users/location/" + this.apiKey;
+    url += "/" + localStorage.getItem("username");
+    return this.http.get(url, { headers: headers }).map(function (res) {
+      return res.json();
+    });
+  }
+
   storeUserData(user, token) {
     // local storage can only store strings
     localStorage.setItem("user", JSON.stringify(user));

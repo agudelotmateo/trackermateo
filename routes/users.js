@@ -107,5 +107,18 @@ router.get("/profile/:apiKey", passport.authenticate("jwt", { session: false }),
         res.json({ success: false, msg: "Invalid API key" });
 });
 
+// '/users/location' route
+router.get("/location/:apiKey/:username", passport.authenticate("jwt", { session: false }), function (req, res, next) {
+    if (keys.apiKeys.has(req.params.apiKey))
+        Location.find({ "username": req.params.username }, function (err, location) {
+            if (err)
+                throw err;
+            else
+                res.json({ location: location });
+        });
+    else
+        res.json({ success: false, msg: "Invalid API key" });
+});
+
 // export the router
 module.exports = router;
