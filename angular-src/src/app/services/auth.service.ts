@@ -7,23 +7,26 @@ import 'rxjs/add/operator/map';
 export class AuthService {
   authToken: any;
   user: any;
-  timer: any; 
+  timer: any;
+  apiKey: String = "qKV4qBykvFmdVVpUcQ1w";
 
   constructor(private http: Http) { }
-
-  registerUser(user) {
-    let headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    return this.http.post("http://localhost:3000/users/register", user, { headers: headers }).map(function (res) {
-      return res.json();
-    });
-  }
 
   recordLocation(location) {
     console.log(location);
     let headers = new Headers();
     headers.append("Content-Type", "application/json");
-    return this.http.post("http://localhost:3000/users/record", location, { headers: headers }).map(function (res) {
+    let url = "http://localhost:3000/users/record/" + this.apiKey;
+    return this.http.post(url, location, { headers: headers }).map(function (res) {
+      return res.json();
+    });
+  }
+
+  registerUser(user) {
+    let headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    let url = "http://localhost:3000/users/register/" + this.apiKey;
+    return this.http.post(url, user, { headers: headers }).map(function (res) {
       return res.json();
     });
   }
@@ -31,7 +34,8 @@ export class AuthService {
   authenticateUser(user) {
     let headers = new Headers();
     headers.append("Content-Type", "application/json");
-    return this.http.post("http://localhost:3000/users/authenticate", user, { headers: headers }).map(function (res) {
+    let url = "http://localhost:3000/users/authenticate/" + this.apiKey;
+    return this.http.post(url, user, { headers: headers }).map(function (res) {
       return res.json();
     });
   }
@@ -41,7 +45,8 @@ export class AuthService {
     this.loadToken();
     headers.append("Authorization", this.authToken);
     headers.append("Content-Type", "application/json");
-    return this.http.get("http://localhost:3000/users/profile", { headers: headers }).map(function (res) {
+    let url = "http://localhost:3000/users/profile/" + this.apiKey;
+    return this.http.get(url, { headers: headers }).map(function (res) {
       return res.json();
     });
   }
