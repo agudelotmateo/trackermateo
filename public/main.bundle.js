@@ -180,7 +180,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "#dashboard {\r\n    text-align: center;\r\n}\r\n\r\n#save-button, #view-button {\r\n    width: 20%;\r\n    margin: 0 2%;\r\n}\r\n", ""]);
+exports.push([module.i, "#dashboard {\r\n    text-align: center;\r\n}\r\n\r\n#save-button, #view-button {\r\n    width: 100px;\r\n    margin: 0 2%;\r\n}\r\n", ""]);
 
 // exports
 
@@ -254,7 +254,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "#register-button, #login-button {\r\n    width: 20%;\r\n    margin: 0 2%;\r\n}\r\n", ""]);
+exports.push([module.i, "#register-button, #login-button {\r\n    width: 100px;\r\n    margin: 0 2%;\r\n}\r\n", ""]);
 
 // exports
 
