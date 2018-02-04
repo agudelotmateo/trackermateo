@@ -13,7 +13,6 @@ export class AuthService {
   constructor(private http: Http) { }
 
   recordLocation(location) {
-    console.log(location);
     let headers = new Headers();
     headers.append("Content-Type", "application/json");
     let url = "http://localhost:3000/users/record/" + this.apiKey;
