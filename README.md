@@ -18,45 +18,37 @@ Following are the instructions to run this application on a CentOS 7 server. As 
 
 1. Git
     Check the installed version of Git using 
-    <pre>git --version
-    </pre>
+    <pre>git --version</pre>
 
     If Git is not already installed, install it using
-    <pre>sudo yum install git
-    </pre>
+    <pre>sudo yum install git</pre>
 
 2. Node 8 LTS
     Check the installed version of Node and NPM (Node Package Manager) using, respectively
-    <pre>node -v
-    npm -v
-    </pre>
+    <pre>node -v</pre>
+    <pre>npm -v</pre>
 
     If Node and/or NPM is/are not already installed, install it/them using
 
-    <pre>curl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash -
-    sudo yum -y install nodejs
-    </pre>
+    <pre>curl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash -</pre>
+    <pre>sudo yum -y install nodejs</pre>
 
     Optional: install build tools
-    <pre>sudo yum groupinstall 'Development Tools'
-    </pre>
+    <pre>sudo yum groupinstall 'Development Tools'</pre>
 
 3. Create a new folder and pull from this repository
-    <pre>mkdir trackermateo
-    cd trackermateo
-    git init
-    git remote add github https://github.com/agudelotmateo/trackermateo
-    git pull github master
-    </pre>
+    <pre>mkdir trackermateo</pre>
+    <pre>cd trackermateo</pre>
+    <pre>git init</pre>
+    <pre>git remote add github https://github.com/agudelotmateo/trackermateo</pre>
+    <pre>git pull github master</pre>    
 
 4. If firewall is blocking it, open port 8080
-    <pre>sudo firewall-cmd --permanent --add-port=8080/tcp
-    sudo firewall-cmd --reload
-    </pre>
+    <pre>sudo firewall-cmd --permanent --add-port=8080/tcp</pre>
+    <pre>sudo firewall-cmd --reload</pre>
 
 5. Run the app
-    <pre>npm start
-    </pre>
+    <pre>npm start</pre>
 
 By now the app will be running and you will be able to access it using *\<your-server-ip\>:8080*
 
