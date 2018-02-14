@@ -52,6 +52,8 @@ Following are the instructions to run this application on a CentOS 7 server. As 
 
 By now the app will be running and you will be able to access it using *\<your-server-ip\>:8080*
 
+This should be changed as HTTPS now works (with self signed certificate though) and Jenkins is used for deployment, as well as PM2 to run the app
+
 # Screenshots
 
 ![Tackermateo's Dashboard image couldn't be loaded](https://i.imgur.com/gAnpToL.jpg "Tackermateo's Dashboard")
