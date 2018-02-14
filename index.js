@@ -17,8 +17,8 @@ const config = require("./config/database.js");
 const app = express();
 
 // select the port 
-// const port = 3000;
-const port = process.env.PORT || 8080;
+const port = 3000;
+// const port = process.env.PORT || 8080;
 
 // connect to the DB
 mongoose.connect(config.database);
