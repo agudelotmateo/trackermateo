@@ -54,6 +54,7 @@ By now the app will be running and you will be able to access it using *\<your-s
 
 This should be changed as HTTPS now works (with self signed certificate though) and Jenkins is used for deployment, as well as PM2 to run the app
 There can be a problem with automatic deployment after every commit pushed to github because of the way webhooks work and the server's IP address not being public
+Jenkins will pull every one minute
 
 # Screenshots
 
